@@ -1,11 +1,21 @@
+
+.searchField {
+  border-color: #eee;
+  font-size: 1rem;
+  padding: 15px 20px;
+  border-radius: 15px;
+  &:focus {
+    border-color: #dedede;
+  }
+}
 .movies {
   display: flex;
   gap: 20px;
-  .searchBlock {
+  .searchResult {
     position: relative;
     width: 100%;
   }
   .nominations {
-    
+
   }
 }

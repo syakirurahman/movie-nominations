@@ -41,10 +41,13 @@ a, a:link {
 }
 .app-wrapper {
   margin: 0 auto;
-  padding: 10px 15px;
+  padding: 100px 15px;
   width:100%;
   min-height: 100vh;
   max-width: 1024px;
+  .app-header {
+    text-align: center;
+  }
 }
 .form-group {
   label {
@@ -91,7 +94,7 @@ a, a:link {
 .box {
   width: 100%;
   background-color: #fff;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 1px solid #eee;
   padding: 20px;
 }

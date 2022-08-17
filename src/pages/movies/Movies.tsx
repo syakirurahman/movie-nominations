@@ -29,17 +29,21 @@ export default function Movies() {
   }, [nominatedMovies])
 
   return(
-    <div className={styles.movies}>
-      <div className={`${styles.searchBlock} box`}>
+    <div>
+      <div className='form-group'>
         <input 
           type='search'
-          className='form-control' 
+          className={`${styles.searchField} form-control`} 
           value={searchQuery} 
           onChange={(e) => handleSearch(e.target.value)}
           placeholder="Search movies"/>
       </div>
-      <div className={`${styles.nominations} box`}>
+      <div className={styles.movies}>
+        <div className={`${styles.searchResult} box`}>
+        </div>
+        <div className={`${styles.nominations} box`}>
 
+        </div>
       </div>
     </div>
   )
