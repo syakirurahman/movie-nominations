@@ -10,31 +10,29 @@ export interface Movie {
 }
 export interface MoviesState {
   searchResult: Movie[],
-  nominatedMovies: Movie | null
+  nominatedMovies: Movie[]
 }
 
-let searchResult: Movie[] = [];
-
 const initialState: MoviesState = {
-  searchResult,
-  nominatedMovies: null
+  searchResult: [],
+  nominatedMovies: []
 }
 
 const slice = createSlice({
   name: 'movies',
   initialState,
   reducers: {
-    setMovies: (state, action: PayloadAction<Movie[]>) => {
+    setSearchResult: (state, action: PayloadAction<Movie[]>) => {
       state.searchResult = action.payload
-      localStorage.setItem('movies', JSON.stringify(action.payload))
+      localStorage.setItem('searchResult', JSON.stringify(action.payload))
     },
-    setNomitatedMovies: (state, action: PayloadAction<Movie | null>) => {
+    setNomitatedMovies: (state, action: PayloadAction<Movie[]>) => {
       state.nominatedMovies = action.payload
     },
   }
 })
 
-export const { setMovies, setNomitatedMovies } = slice.actions
+export const { setSearchResult, setNomitatedMovies } = slice.actions
 
 export const searchMovies = (keyword: string): AppThunk<Movie[]> => (dispatch, getState) => {
   const searchResult = getState().movies.searchResult

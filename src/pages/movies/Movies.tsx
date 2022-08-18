@@ -2,35 +2,37 @@
 import React, { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks'
 import styles from './Movies.module.scss'
-import { Movie, searchMovies } from './Movies.slice'
+import MoviesService from './Movies.service'
+import { Movie, searchMovies, setSearchResult } from './Movies.slice'
 export default function Movies() {
   const [searchQuery, setSearchQuery] = useState<string>('')
-  const [searchResults, setSearchResults] = useState<Movie[]>([])
+  // const [searchResults, setSearchResults] = useState<Movie[]>([])
 
   // Actually we can use react built in state management instead of react redux
   // But, this is what i do when deal with data that come from API
   const dispatch = useAppDispatch()
   const { nominatedMovies } = useAppSelector(state => state.movies)
   const handleSearch = (value: string) => {
-    setSearchResults([])
     setSearchQuery(value)
     if (value.length > 0) {
-      const matchedResult = dispatch(searchMovies(value))
-      setSearchResults(matchedResult)  
+      MoviesService.search(value)
+        .then((res) => {
+          console.log(res)
+          // const matchedResult = dispatch(setSearchResult())
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   }
 
   React.useEffect(() => {
-    if (nominatedMovies) {
-      setSearchQuery(`${nominatedMovies.name} (${nominatedMovies.totalSubordinates})`)
-    } else {
-      setSearchQuery('')
-    }
   }, [nominatedMovies])
 
   return(
     <div>
       <div className='form-group'>
+        <img src={require('../../assets/img/magnifying-glass-light.svg').default} className={styles.searchIcon} />
         <input 
           type='search'
           className={`${styles.searchField} form-control`} 

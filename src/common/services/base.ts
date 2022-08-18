@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const BASE_URL = 'https://www.omdbapi.com/'
+export const BASE_URL = 'https://www.omdbapi.com/?i=tt3896198&apikey=8a61091e'
 
 export const BaseService =  {
   get: async function(url: string) {
