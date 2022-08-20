@@ -33,6 +33,19 @@
     .bannerPoster {
       border-radius: 10px;
       overflow: hidden;
+      .posterPlaceholder {
+        height: 100px;
+        width: 70px;
+        padding: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 11px;
+        color: #aaa;
+        background-color: #efefef;
+        border-radius: 5px;
+      }
     }
   }
   h2 {
