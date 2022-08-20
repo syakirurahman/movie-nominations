@@ -1,0 +1,35 @@
+.loaderOverlay {
+  width:0;
+  height:0;
+  z-index: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .5s;
+  &.active {
+    width:100%;
+    height:100%;
+    opacity: 1;
+    visibility: visible;
+    background:rgba(#fff, .6);
+    left:0;
+    right:0;
+    bottom:0;
+    top:0;
+    z-index: 99999;
+  }
+
+  &.blockLoader {
+    position: absolute;
+  }
+  &.screenLoader {
+    position: fixed;
+  }
+  .loader {
+    display: block;
+    text-align: center;
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
+  }
+}

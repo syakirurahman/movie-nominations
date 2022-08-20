@@ -16,9 +16,62 @@
     border-color: #dedede;
   }
 }
+.banner {
+  border-radius: 10px;
+  background-color: #a43a51;
+  padding:30px;
+  margin-bottom: 25px;
+  text-align: center;
+  color: #fff;
+  .bannerPosters {
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    gap:15px;
+    margin-bottom: 20px;
+    .bannerPoster {
+      border-radius: 10px;
+      overflow: hidden;
+    }
+  }
+}
 .movies {
   display: flex;
   gap: 20px;
+  .movie {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 13px;
+    .posterPlaceholder {
+      width:50px;
+      flex-grow: 0;
+      flex-shrink: 0;
+      display: flex;
+      align-self: stretch;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 11px;
+      color: #aaa;
+      background-color: #efefef;
+      border-radius: 5px;
+    }
+    img {
+      border-radius: 5px;
+    }
+    .movieText {
+      flex-grow: 1;
+      .movieTitle {
+        padding: 5px 0;
+        font-weight: bold;
+      }
+    }
+  }
   .searchResult {
     position: relative;
     width: 100%;
