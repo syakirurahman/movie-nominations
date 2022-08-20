@@ -19,6 +19,7 @@ let nominatedMovies: Movie[] = [];
 const existing = localStorage.getItem('nominatedMovies')
 if (existing) {
   nominatedMovies = JSON.parse(existing) as Movie[]
+  console.log(nominatedMovies)
 }
 const initialState: MoviesState = {
   searchResult: [],
@@ -34,7 +35,7 @@ const slice = createSlice({
     },
     setNominatedMovies: (state, action: PayloadAction<Movie[]>) => {
       state.nominatedMovies = action.payload
-      localStorage.setItem('NominatedMovies', JSON.stringify(action.payload))
+      localStorage.setItem('nominatedMovies', JSON.stringify(action.payload))
     },
   }
 })
