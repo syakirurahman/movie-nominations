@@ -30,7 +30,7 @@ export default function Movies() {
             if (res.Response === 'True' && res.Search) {
               const mappedMovies = res.Search.map(movie => {
                 const nominatedMovie = nominatedMovies.find(nominatedMovie => nominatedMovie.imdbID === movie.imdbID)
-                if (nominatedMovie) movie.Nomitated = true
+                if (nominatedMovie) movie.Nominated = true
                 return movie
               })
               dispatch(setSearchResult(mappedMovies))
@@ -96,10 +96,10 @@ export default function Movies() {
       <div className={styles.movies}>
         <div className={`${styles.searchResult} box`}>
           <AppLoader isActive={loading} mode="block" />
-          <h3>Search Result { searchQuery.length > 2 && <span>for "{searchQuery}"</span> }</h3>
+          <h3 data-testid="searchResultTitle">Search Result { searchQuery.length > 2 && <span>for "{searchQuery}"</span> }</h3>
           {
             searchQuery.length > 2 && fallbackMessage === '' ?
-            <div>
+            <div data-testid="searchResult">
               {
                 searchResult.map((movie) => (
                   <div className={styles.movie} key={movie.imdbID}>
@@ -115,7 +115,7 @@ export default function Movies() {
                       <div>{movie.Year}</div>
                     </div>
                     <div>
-                      <button className={`btn btn-sm btn-primary`} onClick={() => handleNominateMovie(movie)} disabled={movie.Nomitated || nominatedMovies.length >= 5}>Nominate</button>
+                      <button className={`btn btn-sm btn-primary`} onClick={() => handleNominateMovie(movie)} disabled={movie.Nominated || nominatedMovies.length >= 5}>Nominate</button>
                     </div>
                   </div>
                 ))
@@ -126,7 +126,7 @@ export default function Movies() {
           }
         </div>
         <div className={`${styles.nominations} box`}>
-          <h3>Nominations ({nominatedMovies.length})</h3>
+          <h3>Nominations { nominatedMovies.length > 0 && `(${nominatedMovies.length})` }</h3>
           <div>
               {
                 nominatedMovies.map((movie) => (
